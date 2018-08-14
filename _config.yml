@@ -87,7 +87,7 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:feiniaoying/feiniaoying.github.io.git
-  branch: master
+  branch: gh-pages
 
 avatar: /images/avatar.png   
 
