@@ -86,7 +86,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:feiniaoying/feiniaoying.github.io.git
+  repo: git@github.com:feiniaoying/blog.git
   branch: gh-pages
 
 avatar: /images/avatar.png   
