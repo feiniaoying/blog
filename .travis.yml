@@ -8,10 +8,7 @@ addons: # Travis CI建议加的，自动更新api
 cache:
   directories: 
   - node_modules # 缓存 node_modules
-  
-before_install:
-  - export TZ='Asia/Shanghai' # 更改时区
-  
+
 install:
 - npm install # 初次安装，在CI环境中，执行安装npm依赖
 
@@ -40,5 +37,5 @@ branches:
 env:
   global: # 全局变量，上面的提交到github的命令有用到
   - GH_REF: git@github.com:feiniaoying/blog.git
-#  - secure: 
+  - secure: 
 # secure是自动生成的，执行`travis encrypt 'GH_TOKEN=${your_github_personal_access_token}' --add`
