@@ -34,11 +34,11 @@ deploy:
   # 将 public 目录下的内容推送到 master 分支上（必须）
   local_dir: public
   target-branch: gh-pages
-  fqdn: https://github.com/feiniaoying/blog.git
+  #fqdn: https://github.com/feiniaoying/blog.git
   name: chenwt
   email: feiniaoying@163.com
-  on:
-    branch: master
+  #on:
+  #  branch: master
   
 #after_success: # 执行script成功后，进入到public，把里面的代码提交到博客的gh-pages分支
 #  - cd ./public
