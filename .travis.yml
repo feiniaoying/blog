@@ -8,24 +8,46 @@ addons: # Travis CI建议加的，自动更新api
 cache:
   directories: 
   - node_modules # 缓存 node_modules
+  
+before_install:
+  - export TZ='Asia/Shanghai' # 更改时区
 
+# 依赖安装
 install:
 - npm install # 初次安装，在CI环境中，执行安装npm依赖
 
 # before_script: 
 
+# 构建脚本
 script:
   #- hexo d # hexo配置文件中配置git部署到gh-pages分支
   - hexo g # 执行 hexo generate，把文章编译到public中
 
+  
+
+ # GitHub Pages 部署
+deploy:
+  provider: pages
+  skip_cleanup: true
+  # 在项目仪表盘的 Settings -> Environment Variables 中配置
+  github_token: $blog
+  # 将 public 目录下的内容推送到 master 分支上（必须）
+  local_dir: public
+  target-branch: gh-pages
+  fqdn: $CUSTOM_DOMAIN
+  name: chenwt
+  email: feiniaoying@163.com
+  on:
+    branch: master
+  
 after_success: # 执行script成功后，进入到public，把里面的代码提交到博客的gh-pages分支
-- cd ./public
-- git init
-- git config user.name "chenwt"
-- git config user.email "feiniaoying@163.com"
-- git add .
-- git commit -m "Update site"
-- git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages # GH_TOKEN就是配置在travis中的github token名
+#  - cd ./public
+#  - git init
+#  - git config user.name "chenwt"
+#  - git config user.email "feiniaoying@163.com"
+#  - git add .
+#  - git commit -m "Update site"
+#  - git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages # GH_TOKEN就是配置在travis中的github token名
 
 #after_success: # 执行script成功后，将生成的public目录文件推送到博客的gh-pages分支
 
