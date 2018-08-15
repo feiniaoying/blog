@@ -34,13 +34,13 @@ deploy:
   # 将 public 目录下的内容推送到 master 分支上（必须）
   local_dir: public
   target-branch: gh-pages
-  fqdn: $CUSTOM_DOMAIN
+  fqdn: https://github.com/feiniaoying/blog.git
   name: chenwt
   email: feiniaoying@163.com
   on:
     branch: master
   
-after_success: # 执行script成功后，进入到public，把里面的代码提交到博客的gh-pages分支
+#after_success: # 执行script成功后，进入到public，把里面的代码提交到博客的gh-pages分支
 #  - cd ./public
 #  - git init
 #  - git config user.name "chenwt"
@@ -56,8 +56,8 @@ branches:
   only:
   - master # CI 只针对分支 master
 
-env:
-  global: # 全局变量，上面的提交到github的命令有用到
-  - GH_REF: git@github.com:feiniaoying/blog.git
-  - secure: 
+#env:
+#  global: # 全局变量，上面的提交到github的命令有用到
+#  - GH_REF: git@github.com:feiniaoying/blog.git
+#  - secure: 
 # secure是自动生成的，执行`travis encrypt 'GH_TOKEN=${your_github_personal_access_token}' --add`
