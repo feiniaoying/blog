@@ -423,9 +423,9 @@ vkontakte_api:
 # Star rating support to each article.
 # To get your ID visit https://widgetpack.com
 rating:
-  enable: false
-  id:     #<app_id>
-  color:  fc6423
+  enable: true
+  id:     13258
+  color:  f79533
 
 
 # Show number of visitors to each article.
@@ -700,3 +700,4 @@ links:
   菜鸟网络: http://www.example.com
   十点读书: http://www.example.com
   有道: http://www.example.com
+  
