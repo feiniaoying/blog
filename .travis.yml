@@ -22,6 +22,7 @@ install:
 script:
   #- hexo d # hexo配置文件中配置git部署到gh-pages分支
   - hexo g # 执行 hexo generate，把文章编译到public中
+  - cp CNAME public/  # 将自定义域名配置的github page配置文件拷贝到public目录
 
 # GitHub Pages 部署
 deploy:

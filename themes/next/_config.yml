@@ -51,6 +51,7 @@ menu:
   archives: /archives/
   tags: /tags/
   photos: /photos/ 
+  top: /top/
   about: /about/
   #sitemap: /sitemap.xml
   #commonweal: /404/
@@ -72,6 +73,7 @@ menu_icons:
   sitemap: sitemap
   commonweal: heartbeat
   photos: camera-retro
+  top: signal
 
 # ---------------------------------------------------------------
 # Scheme Settings

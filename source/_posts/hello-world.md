@@ -1,5 +1,13 @@
 ---
 title: Hello World
+tags: 
+    - tag1
+    - tag2
+categories: 
+    - technology
+    - computer
+    - computer-aided-art
+comments: false
 ---
 修改测试2
 
