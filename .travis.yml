@@ -1,41 +1,41 @@
 language: node_js
 node_js: stable
 
-addons: # Travis CI½¨Òé¼ÓµÄ£¬×Ô¶¯¸üĞÂapi
+addons: # Travis CIå»ºè®®åŠ çš„ï¼Œè‡ªåŠ¨æ›´æ–°api
   apt:
     update: true
 
 cache:
   directories: 
-  - node_modules # »º´æ node_modules
+  - node_modules # ç¼“å­˜ node_modules
 
 install:
-- npm install # ³õ´Î°²×°£¬ÔÚCI»·¾³ÖĞ£¬Ö´ĞĞ°²×°npmÒÀÀµ
+- npm install # åˆæ¬¡å®‰è£…ï¼Œåœ¨CIç¯å¢ƒä¸­ï¼Œæ‰§è¡Œå®‰è£…npmä¾èµ–
 
 # before_script: 
 
 script:
-  #- hexo d # hexoÅäÖÃÎÄ¼şÖĞÅäÖÃgit²¿Êğµ½gh-pages·ÖÖ§
-  - hexo g # Ö´ĞĞ hexo generate£¬°ÑÎÄÕÂ±àÒëµ½publicÖĞ
+  #- hexo d # hexoé…ç½®æ–‡ä»¶ä¸­é…ç½®gitéƒ¨ç½²åˆ°gh-pagesåˆ†æ”¯
+  - hexo g # æ‰§è¡Œ hexo generateï¼ŒæŠŠæ–‡ç« ç¼–è¯‘åˆ°publicä¸­
 
-after_success: # Ö´ĞĞscript³É¹¦ºó£¬½øÈëµ½public£¬°ÑÀïÃæµÄ´úÂëÌá½»µ½²©¿ÍµÄgh-pages·ÖÖ§
+after_success: # æ‰§è¡ŒscriptæˆåŠŸåï¼Œè¿›å…¥åˆ°publicï¼ŒæŠŠé‡Œé¢çš„ä»£ç æäº¤åˆ°åšå®¢çš„gh-pagesåˆ†æ”¯
 - cd ./public
 - git init
 - git config user.name "chenwt"
 - git config user.email "feiniaoying@163.com"
 - git add .
 - git commit -m "Update site"
-- git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages # GH_TOKEN¾ÍÊÇÅäÖÃÔÚtravisÖĞµÄgithub tokenÃû
+- git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages # GH_TOKENå°±æ˜¯é…ç½®åœ¨travisä¸­çš„github tokenå
+- echo "chenwt"
+#after_success: # æ‰§è¡ŒscriptæˆåŠŸåï¼Œå°†ç”Ÿæˆçš„publicç›®å½•æ–‡ä»¶æ¨é€åˆ°åšå®¢çš„gh-pagesåˆ†æ”¯
 
-#after_success: # Ö´ĞĞscript³É¹¦ºó£¬½«Éú³ÉµÄpublicÄ¿Â¼ÎÄ¼şÍÆËÍµ½²©¿ÍµÄgh-pages·ÖÖ§
-
-# ·ÖÖ§°×Ãûµ¥
+# åˆ†æ”¯ç™½åå•
 branches:
   only:
-  - master # CI Ö»Õë¶Ô·ÖÖ§ master
+  - master # CI åªé’ˆå¯¹åˆ†æ”¯ master
 
 env:
-  global: # È«¾Ö±äÁ¿£¬ÉÏÃæµÄÌá½»µ½githubµÄÃüÁîÓĞÓÃµ½
+  global: # å…¨å±€å˜é‡ï¼Œä¸Šé¢çš„æäº¤åˆ°githubçš„å‘½ä»¤æœ‰ç”¨åˆ°
   - GH_REF: git@github.com:feiniaoying/blog.git
   - secure: 
-# secureÊÇ×Ô¶¯Éú³ÉµÄ£¬Ö´ĞĞ`travis encrypt 'GH_TOKEN=${your_github_personal_access_token}' --add`
+# secureæ˜¯è‡ªåŠ¨ç”Ÿæˆçš„ï¼Œæ‰§è¡Œ`travis encrypt 'GH_TOKEN=${your_github_personal_access_token}' --add`
