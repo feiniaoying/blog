@@ -1,41 +1,45 @@
 language: node_js
 node_js: stable
 
-addons: # Travis CIå»ºè®®åŠ çš„ï¼Œè‡ªåŠ¨æ›´æ–°api
+addons: # Travis CI½¨Òé¼ÓµÄ£¬×Ô¶¯¸üĞÂapi
   apt:
     update: true
 
 cache:
   directories: 
-  - node_modules # ç¼“å­˜ node_modules
+  - node_modules # »º´æ node_modules
+  
+before_install:
+  - export TZ='Asia/Shanghai' # ¸ü¸ÄÊ±Çø
 
+# ÒÀÀµ°²×°
 install:
-- npm install # åˆæ¬¡å®‰è£…ï¼Œåœ¨CIç¯å¢ƒä¸­ï¼Œæ‰§è¡Œå®‰è£…npmä¾èµ–
+- npm install # ³õ´Î°²×°£¬ÔÚCI»·¾³ÖĞ£¬Ö´ĞĞ°²×°npmÒÀÀµ
 
 # before_script: 
 
+# ¹¹½¨½Å±¾
 script:
-  #- hexo d # hexoé…ç½®æ–‡ä»¶ä¸­é…ç½®gitéƒ¨ç½²åˆ°gh-pagesåˆ†æ”¯
-  - hexo g # æ‰§è¡Œ hexo generateï¼ŒæŠŠæ–‡ç« ç¼–è¯‘åˆ°publicä¸­
+  #- hexo d # hexoÅäÖÃÎÄ¼şÖĞÅäÖÃgit²¿Êğµ½gh-pages·ÖÖ§
+  - hexo g # Ö´ĞĞ hexo generate£¬°ÑÎÄÕÂ±àÒëµ½publicÖĞ
 
-after_success: # æ‰§è¡ŒscriptæˆåŠŸåï¼Œè¿›å…¥åˆ°publicï¼ŒæŠŠé‡Œé¢çš„ä»£ç æäº¤åˆ°åšå®¢çš„gh-pagesåˆ†æ”¯
-- cd ./public
-- git init
-- git config user.name "chenwt"
-- git config user.email "feiniaoying@163.com"
-- git add .
-- git commit -m "Update site"
-- git push --force --quiet "https://${blog}@${GH_REF}" master:gh-pages # GH_TOKENå°±æ˜¯é…ç½®åœ¨travisä¸­çš„github tokenå
-- echo "chenwt"
-#after_success: # æ‰§è¡ŒscriptæˆåŠŸåï¼Œå°†ç”Ÿæˆçš„publicç›®å½•æ–‡ä»¶æ¨é€åˆ°åšå®¢çš„gh-pagesåˆ†æ”¯
+# GitHub Pages ²¿Êğ
+deploy:
+  provider: pages
+  skip_cleanup: true
+  # ÔÚÏîÄ¿ÒÇ±íÅÌµÄ Settings -> Environment Variables ÖĞÅäÖÃ
+  github_token: $blog
+  # ½« public Ä¿Â¼ÏÂµÄÄÚÈİÍÆËÍµ½ gh-pages ·ÖÖ§ÉÏ£¨±ØĞë£©
+  local_dir: public
+  target-branch: gh-pages
+  #fqdn: https://github.com/feiniaoying/blog.git £¨·Ç±ØĞè£©
+  # pushµ½githubµÄÓÃ»§ºÍÓÊÏä
+  name: chenwt
+  email: feiniaoying@163.com
+  #on:
+  #  branch: master
 
-# åˆ†æ”¯ç™½åå•
+# ·ÖÖ§°×Ãûµ¥
 branches:
   only:
-  - master # CI åªé’ˆå¯¹åˆ†æ”¯ master
-
-env:
-  global: # å…¨å±€å˜é‡ï¼Œä¸Šé¢çš„æäº¤åˆ°githubçš„å‘½ä»¤æœ‰ç”¨åˆ°
-  - GH_REF: git@github.com:feiniaoying/blog.git
-  - secure: 
-# secureæ˜¯è‡ªåŠ¨ç”Ÿæˆçš„ï¼Œæ‰§è¡Œ`travis encrypt 'GH_TOKEN=${your_github_personal_access_token}' --add`
+  - master # CI Ö»Õë¶Ô·ÖÖ§ master
